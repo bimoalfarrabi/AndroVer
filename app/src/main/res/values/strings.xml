@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">AndroVer</string>
+    <string name="scroll_to_top">Gulir keatas</string>
+    <string name="menu_home">Beranda</string>
+    <string name="menu_favorite">Favorit</string>
+    <string name="menu_profile">Profil</string>
+    <string name="search_androver">Ketik versi Android</string>
+    <string name="about">Tentang saya</string>
+    <string name="back">Kembali</string>
+    <string name="empty_favorite">Tidak ada favorit</string>
+    <string name="favorite">Favorit</string>
+    <string name="delete_favorite">Hapus favorit</string>
+    <string name="add_favorite">Tambah favorit</string>
+    <string name="empty_data">Data Kosong</string>
+    <string name="title_home">Beranda</string>
+    <string name="email_author">bimoalfarrabi@gmail.com</string>
+    <string name="name_author">Muhammad Bimo Habib Al-Farrabi</string>
+</resources>
