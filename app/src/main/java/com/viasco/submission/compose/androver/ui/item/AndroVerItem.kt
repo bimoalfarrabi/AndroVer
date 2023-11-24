@@ -74,9 +74,9 @@ fun AndroVerItem(
         Icon(
             imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
             contentDescription = null,
-            tint = if (!isFavorite) Color.Black else Color.Red,
+            tint = if (!isFavorite) Color.Black else MaterialTheme.colorScheme.primary,
             modifier = Modifier
-                .align(Alignment.TopEnd)
+                .align(Alignment.CenterEnd)
                 .padding(8.dp)
                 .size(32.dp)
                 .clickable { onFavoriteIconClick(id, !isFavorite) }

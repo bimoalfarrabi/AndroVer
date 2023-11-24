@@ -3,19 +3,31 @@ package com.viasco.submission.compose.androver
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.rounded.AccountCircle
+import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.FavoriteBorder
+import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -93,50 +105,58 @@ private fun BottomBar(
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
+
+    val navigationItems = listOf(
+        NavigationItem(
+            title = stringResource(R.string.menu_home),
+            icon = Icons.Outlined.Home,
+            iconSelected = Icons.Filled.Home,
+            screen = Screen.Home
+        ),
+        NavigationItem(
+            title = stringResource(R.string.menu_favorite),
+            icon = Icons.Outlined.FavoriteBorder,
+            iconSelected = Icons.Filled.Favorite,
+            screen = Screen.Favorite
+        ),
+        NavigationItem(
+            title = stringResource(R.string.menu_profile),
+            icon = Icons.Outlined.AccountCircle,
+            iconSelected = Icons.Filled.AccountCircle,
+            screen = Screen.Profile
+        ),
+    )
+
     NavigationBar(
         modifier = modifier
     ) {
-        val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.destination?.route
-        val navigationItem = listOf(
-            NavigationItem(
-                title = stringResource(R.string.menu_home),
-                icon = Icons.Default.Home,
-                screen = Screen.Home
-            ),
-            NavigationItem(
-                title = stringResource(R.string.menu_favorite),
-                icon = Icons.Rounded.FavoriteBorder,
-                screen = Screen.Favorite
-            ),
-            NavigationItem(
-                title = stringResource(R.string.menu_profile),
-                icon = Icons.Default.AccountCircle,
-                screen = Screen.Profile
-            ),
-        )
-        NavigationBar {
-            navigationItem.map { item ->
-                NavigationBarItem(
-                    icon = {
-                        Icon(
-                            imageVector = item.icon,
-                            contentDescription = item.title
-                        )
-                    },
-                    label = { Text(item.title) },
-                    selected = currentRoute == item.screen.route,
-                    onClick = {
-                        navController.navigate(item.screen.route) {
-                            popUpTo(navController.graph.findStartDestination().id) {
-                                saveState = true
-                            }
-                            restoreState = true
-                            launchSingleTop = true
+        navigationItems.forEach { item ->
+            NavigationBarItem(
+                icon = {
+                    Icon(
+                        imageVector = if (currentRoute == item.screen.route) item.iconSelected else item.icon,
+                        contentDescription = item.title
+                    )
+                },
+                selected = currentRoute == item.screen.route,
+                label = {
+                    Text(
+                        item.title,
+                        fontWeight = if (currentRoute == item.screen.route) FontWeight.Bold else FontWeight.Normal,
+                    )
+                },
+                onClick = {
+                    navController.navigate(item.screen.route) {
+                        popUpTo(navController.graph.findStartDestination().id) {
+                            saveState = true
                         }
+                        restoreState = true
+                        launchSingleTop = true
                     }
-                )
-            }
+                }
+            )
         }
     }
 }
