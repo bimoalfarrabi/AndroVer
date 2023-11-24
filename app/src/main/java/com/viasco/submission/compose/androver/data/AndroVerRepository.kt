@@ -51,8 +51,8 @@ class AndroVerRepository {
         private var INSTANCE: AndroVerRepository? = null
 
         fun getInstance(): AndroVerRepository {
-            return INSTANCE?: synchronized(this) {
-                INSTANCE?: AndroVerRepository().also { INSTANCE = it }
+            return INSTANCE ?: synchronized(this) {
+                INSTANCE ?: AndroVerRepository().also { INSTANCE = it }
             }
         }
     }

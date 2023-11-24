@@ -15,7 +15,7 @@ fun EmptyList(
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier
-           .fillMaxSize()
+            .fillMaxSize()
     ) {
         Text(
             text = warning

@@ -10,12 +10,12 @@ import com.viasco.submission.compose.androver.ui.common.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repository: AndroVerRepository) : ViewModel() {
 
-    private val _uiState: MutableStateFlow<UiState<List<AndroVer>>> = MutableStateFlow(UiState.Loading)
+    private val _uiState: MutableStateFlow<UiState<List<AndroVer>>> =
+        MutableStateFlow(UiState.Loading)
 
     val uiState: StateFlow<UiState<List<AndroVer>>> get() = _uiState
 

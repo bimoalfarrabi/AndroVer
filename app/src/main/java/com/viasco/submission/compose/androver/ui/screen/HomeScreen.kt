@@ -16,6 +16,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SearchBar
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -31,7 +32,6 @@ import com.viasco.submission.compose.androver.model.AndroVer
 import com.viasco.submission.compose.androver.ui.common.UiState
 import com.viasco.submission.compose.androver.ui.item.AndroVerItem
 import com.viasco.submission.compose.androver.ui.item.EmptyList
-import androidx.compose.material3.SearchBar
 import com.viasco.submission.compose.androver.ui.viewmodel.HomeViewModel
 import com.viasco.submission.compose.androver.ui.viewmodel.ViewModelFactory
 
@@ -49,6 +49,7 @@ fun HomeScreen(
             is UiState.Loading -> {
                 viewModel.search(query)
             }
+
             is UiState.Success -> {
                 HomeContent(
                     query = query,
@@ -60,6 +61,7 @@ fun HomeScreen(
                     navigateToDetail = navigateToDetail
                 )
             }
+
             is UiState.Error -> {}
         }
     }
@@ -75,7 +77,7 @@ fun HomeContent(
     navigateToDetail: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Column{
+    Column {
         SearchBar(
             query = query,
             onQueryChange = onQueryChange,

@@ -27,6 +27,7 @@ fun FavoriteScreen(
             is UiState.Loading -> {
                 viewModel.getFavoriteAndroVer()
             }
+
             is UiState.Success -> {
                 FavoriteInfo(
                     listAndroVer = uiState.data,
@@ -36,6 +37,7 @@ fun FavoriteScreen(
                     }
                 )
             }
+
             is UiState.Error -> {}
         }
     }

@@ -7,7 +7,6 @@ import com.viasco.submission.compose.androver.model.AndroVer
 import com.viasco.submission.compose.androver.ui.common.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class DetailViewModel(private val repository: AndroVerRepository) : ViewModel() {
