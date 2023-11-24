@@ -31,7 +31,7 @@ import com.viasco.submission.compose.androver.model.AndroVer
 import com.viasco.submission.compose.androver.ui.common.UiState
 import com.viasco.submission.compose.androver.ui.item.AndroVerItem
 import com.viasco.submission.compose.androver.ui.item.EmptyList
-import com.viasco.submission.compose.androver.ui.item.SearchBar
+import androidx.compose.material3.SearchBar
 import com.viasco.submission.compose.androver.ui.viewmodel.HomeViewModel
 import com.viasco.submission.compose.androver.ui.viewmodel.ViewModelFactory
 
@@ -76,7 +76,7 @@ fun HomeContent(
     modifier: Modifier = Modifier
 ) {
     Column{
-        androidx.compose.material3.SearchBar(
+        SearchBar(
             query = query,
             onQueryChange = onQueryChange,
             onSearch = {},
